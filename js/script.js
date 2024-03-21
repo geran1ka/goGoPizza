@@ -19,6 +19,24 @@ const toppingsToogle = () => {
   });
 };
 
+const getToppings = async () => {
+  try {
+    const response = await fetch(
+      `https://fallacious-bony-lung.glitch.me/api/toppings`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Не удалось получить список топпингов`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.log("error: ", error);
+
+    return error?.message;
+  }
+};
+
 const getPizzas = async () => {
   try {
     const response = await fetch(
@@ -70,6 +88,7 @@ const createCard = (data) => {
 
 const renderPizzas = async () => {
   const pizzas = await getPizzas();
+  console.log(await getToppings());
 
   const pizzaList = document.querySelector(".pizza__list");
   pizzaList.textContent = "";
@@ -93,23 +112,45 @@ const init = () => {
 
 init();
 
-// <li class="pizza__item">
-// <article class="pizza__card card">
-//   <img
-//     class="card__image"
-//     src="img/pizza-margherita.png"
-//     alt="Маргарита"
-//   />
-
-//   <div class="card__content">
-//     <h3 class="card__title">Маргарита</h3>
-
-//     <p class="card__info">
-//       <span class="card__price">480</span>
-//       <span>/</span>
-//       <span class="card__weight">25см</span>
-//     </p>
-
-//     <button class="card__button">Выбрать</button>
-//   </div>
-// </article>
+const toppings = {
+  en: [
+    "tomatoes",
+    "mozzarella",
+    "basil",
+    "pepperoni",
+    "seafood",
+    "olives",
+    "gouda",
+    "blue_cheese",
+    "parmesan",
+    "ham",
+    "mushrooms",
+    "onion",
+    "bell_pepper",
+    "teriyaki_chicken",
+    "pineapple",
+    "capers",
+    "anchovies",
+    "oregano",
+  ],
+  ru: [
+    "помидоры",
+    "моцарелла",
+    "базилик",
+    "пепперони",
+    "морепродукты",
+    "оливки",
+    "гауда",
+    "дор блю",
+    "пармезан",
+    "ветчина",
+    "шампиньоны",
+    "лук",
+    "болгарский перец",
+    "курица терияки",
+    "ананас",
+    "каперсы",
+    "анчоусы",
+    "орегано",
+  ],
+};
