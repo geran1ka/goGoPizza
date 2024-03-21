@@ -1,6 +1,7 @@
 .card {
   position: relative;
-
+  display: flex;
+  flex-direction: column;
   padding-top: 35px;
 }
 
@@ -13,6 +14,9 @@
 }
 
 .card__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   background: var(--white);
   padding: 48px 8px 8px;
   border-radius: 16px;
@@ -23,12 +27,14 @@
   font-size: 18px;
   text-align: center;
   color: var(--dark);
+  flex-grow: 1;
 }
 
 .card__info {
   display: flex;
   justify-content: center;
-  margin-bottom: 4px;
+  gap: 4px;
+  margin-bottom: 12px;
   font-size: 14px;
   color: var(--beige);
 }
@@ -36,7 +42,6 @@
 .card__price {
   font-weight: 600;
   color: var(--dark);
-  margin-bottom: 16px;
 }
 
 .card__weight {
@@ -48,4 +53,34 @@
   background: var(--light);
   font-size: 14px;
   color: var(--orange);
+}
+
+@media (width >= 620px) {
+  .card {
+    padding-top: 46px;
+  }
+
+  .card__image {
+    width: 180px;
+  }
+
+  .card__content {
+    background: var(--white);
+    padding: 146px 24px 24px;
+    border-radius: 32px;
+  }
+
+  .card__title {
+    font-size: 24px;
+  }
+
+  .card__info {
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 20px;
+  }
+
+  .card__button {
+    font-size: 20px;
+  }
 }

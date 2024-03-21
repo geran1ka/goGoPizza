@@ -72,3 +72,40 @@
   color: var(--light);
   background: var(--orange);
 }
+
+@media (width >= 620px) {
+  .toppings {
+    padding: 32px 0px;
+  }
+
+  .toppings__button {
+    font-size: 24px;
+  }
+
+  .toppings__label {
+    font-size: 20px;
+  }
+}
+
+@media (width >= 860px) {
+  .toppings__title {
+    position: static;
+    transform: scale(1);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--dark);
+  }
+
+  .toppings__list {
+    display: flex;
+    max-height: none;
+    /* !todo */
+  }
+
+  .toppings__button {
+    display: none;
+  }
+}
+
+@media (width >= 1140px) {
+}
