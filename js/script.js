@@ -37,6 +37,36 @@ const getToppings = async () => {
   }
 };
 
+const renderToppings = async () => {
+  const toppings = await getToppings();
+
+  const toppingsList = document.querySelector(".toppings__list");
+  toppingsList.textContent = "";
+
+  const items = toppings.en.map((data, i) => {
+    const item = document.createElement("li");
+    item.innerHTML = `
+    <input
+    id="${data}"
+    class="toppings__checkbox"
+    type="checkbox"
+    value="${data}"
+    name="topping"
+  />
+
+  <label class="toppings__label" for="${data}">${toppings.ru[
+      i
+    ][0].toUpperCase()}${toppings.ru[i].slice(1).toLowerCase()}</label>
+    `;
+
+    return item;
+  });
+
+  toppingsList.append(...items);
+
+  return toppingsList;
+};
+
 const getPizzas = async () => {
   try {
     const response = await fetch(
@@ -51,12 +81,11 @@ const getPizzas = async () => {
   } catch (error) {
     console.log("error: ", error);
 
-    return error?.message;
+    return error;
   }
 };
 
 const createCard = (data) => {
-  console.log("data: ", data);
   const card = document.createElement("article");
   card.classList.add("pizza__card", "card");
   card.innerHTML = `
@@ -88,7 +117,6 @@ const createCard = (data) => {
 
 const renderPizzas = async () => {
   const pizzas = await getPizzas();
-  console.log(await getToppings());
 
   const pizzaList = document.querySelector(".pizza__list");
   pizzaList.textContent = "";
@@ -106,51 +134,8 @@ const renderPizzas = async () => {
 
 const init = () => {
   toppingsToogle();
-
+  renderToppings();
   renderPizzas();
 };
 
 init();
-
-const toppings = {
-  en: [
-    "tomatoes",
-    "mozzarella",
-    "basil",
-    "pepperoni",
-    "seafood",
-    "olives",
-    "gouda",
-    "blue_cheese",
-    "parmesan",
-    "ham",
-    "mushrooms",
-    "onion",
-    "bell_pepper",
-    "teriyaki_chicken",
-    "pineapple",
-    "capers",
-    "anchovies",
-    "oregano",
-  ],
-  ru: [
-    "помидоры",
-    "моцарелла",
-    "базилик",
-    "пепперони",
-    "морепродукты",
-    "оливки",
-    "гауда",
-    "дор блю",
-    "пармезан",
-    "ветчина",
-    "шампиньоны",
-    "лук",
-    "болгарский перец",
-    "курица терияки",
-    "ананас",
-    "каперсы",
-    "анчоусы",
-    "орегано",
-  ],
-};
