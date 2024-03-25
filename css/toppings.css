@@ -63,7 +63,8 @@
   color: var(--beige);
   cursor: pointer;
 
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background 0.3s ease-in-out;
 }
 
 .toppings__label:hover {
@@ -73,6 +74,7 @@
 .toppings__checkbox:focus-visible + .toppings__label {
   background: var(--white);
   border-color: #b66200;
+  color: var(--orange);
 }
 
 .toppings__checkbox:checked + .toppings__label {
@@ -80,9 +82,8 @@
   background: var(--orange);
 }
 
-.toppings__label:hover,
 .toppings__checkbox:checked + .toppings__label:hover {
-  color: var(--dark);
+  color: var(--white);
 }
 
 .toppings__reset {
@@ -102,13 +103,13 @@
     border-color 0.3s ease-in-out;
 }
 
+.toppings__reset:focus-visible {
+  border-color: #b66200;
+}
+
 .toppings__reset:hover {
   color: var(--white);
   background: var(--orange);
-}
-
-.toppings__reset:focus-visible {
-  border-color: #b66200;
 }
 
 @media (width >= 620px) {
