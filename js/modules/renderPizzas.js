@@ -1,6 +1,8 @@
 import { URL_API } from "./const.js";
 import { getData } from "./getData.js";
+import { changeFirstUpperCase } from "./helpers.js";
 import { modalController } from "./modalController.js";
+import { renderModalPizza } from "./renderModalPizza.js";
 
 const btnReset = document.createElement("button");
 btnReset.classList.add("pizza__reset-toppings");
@@ -17,13 +19,11 @@ const createCard = (data) => {
     <img
       class="card__image"
       src="${data.images[0]}"
-      alt="${data.name.ru}"
+      alt="${changeFirstUpperCase(data.name.ru)}"
     />
   </picture>
   <div class="card__content">
-    <h3 class="card__title">${data.name["ru"][0].toUpperCase()}${data.name["ru"]
-    .slice(1)
-    .toLowerCase()}</h3>
+    <h3 class="card__title">${changeFirstUpperCase(data.name["ru"])}</h3>
 
     <p class="card__info">
       <span class="card__price">${data.price["25cm"]}</span>
@@ -65,8 +65,13 @@ export const renderPizzas = async (toppings) => {
       modal: ".modal-pizza",
       btnOpen: ".card__button",
       btnClose: ".modal__close",
-      cbOpen(btnOpen) {
-        console.log("btnOpen: ", btnOpen);
+      async cbOpen(btnOpen) {
+        const pizza = await getData(
+          `${URL_API}/api/products/${btnOpen.dataset.id}`
+        );
+        console.log("pizza: ", pizza);
+
+        renderModalPizza(pizza);
       },
     });
   } else {

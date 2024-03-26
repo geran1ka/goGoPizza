@@ -7,11 +7,7 @@ export const modalController = ({
   time = 300,
   cbOpen = () => {},
 }) => {
-  console.log("btnClose: ", btnClose);
-  console.log("btnOpen: ", btnOpen);
-  console.log("modal: ", modal);
   const buttonElems = document.querySelectorAll(btnOpen);
-  console.log("buttonElems: ", buttonElems);
   const modalElem = document.querySelector(modal);
 
   modalElem.style.cssText = `
