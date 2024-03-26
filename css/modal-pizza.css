@@ -4,6 +4,7 @@
 .modal-pizza__main {
   max-width: 292px;
   padding: 24px 16px 16px;
+  width: 100%;
 }
 
 .modal-pizza__img {
@@ -55,6 +56,10 @@
   gap: 7px;
   justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.modal-pizza__wrapper {
+  display: flex;
 }
 
 .modal-pizza__fieldset:last-child {
@@ -122,4 +127,36 @@
 
 .modal-pizza__add-cart:focus {
   border-color: #b66200;
+}
+
+.modal-pizza__add-cart:disabled {
+  opacity: 0.6;
+}
+
+@media (width >= 620px) {
+  .modal-pizza__main {
+    max-width: 368px;
+  }
+
+  .modal-pizza__title {
+    font-size: 24px;
+  }
+
+  .modal-pizza__toppings {
+    font-size: 20px;
+  }
+
+  .modal-pizza__info {
+    font-size: 20px;
+    gap: 8px;
+  }
+
+  .modal-pizza__label {
+    font-size: 16px;
+    flex-basis: 155px;
+  }
+
+  .modal-pizza__add-cart {
+    font-size: 20px;
+  }
 }
