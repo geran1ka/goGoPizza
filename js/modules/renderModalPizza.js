@@ -1,18 +1,11 @@
 import { cartControl } from "./cartControll.js";
-import { URL_API } from "./const.js";
 import {
   changeFirstUpperCase,
   createLabel,
   createRadioInput,
 } from "./helpers.js";
 
-export const renderModalPizza = ({
-  id,
-  img: images,
-  name,
-  price,
-  toppings,
-}) => {
+export const renderModalPizza = ({ id, images, name, price, toppings }) => {
   const modalPizzaMain = document.querySelector(".modal-pizza__main");
   modalPizzaMain.textContent = "";
 
@@ -20,12 +13,12 @@ export const renderModalPizza = ({
 
   const picture = document.createElement("picture");
   const sourse = document.createElement("source");
-  sourse.srcset = `${URL_API}/${images[1]}`;
+  sourse.srcset = `${images[1]}`;
   sourse.type = "image/webp";
 
   const img = document.createElement("img");
   img.classList.add("modal-pizza__img");
-  img.src = `${URL_API}/${images[0]}`;
+  img.src = `${images[0]}`;
   img.alt = changeFirstUpperCase(name.ru);
 
   picture.append(sourse, img);
@@ -154,6 +147,8 @@ export const renderModalPizza = ({
 
   updatePrice();
 
+  let timerId = null;
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -170,7 +165,7 @@ export const renderModalPizza = ({
     addToCartBtn.disabled = true;
     addToCartBtn.textContent = "Добавлено";
 
-    let timerId = -1;
+    console.log("timerId: ", timerId);
 
     timerId = setTimeout(() => {
       addToCartBtn.disabled = false;
@@ -179,7 +174,9 @@ export const renderModalPizza = ({
   });
 
   form.addEventListener("change", () => {
-    clearTimeout(timerId);
+    if (timerId) {
+      clearTimeout(timerId);
+    }
     addToCartBtn.disabled = false;
     addToCartBtn.textContent = "В корзину";
   });

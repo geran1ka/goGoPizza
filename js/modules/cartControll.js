@@ -5,7 +5,14 @@ export const cartControl = {
     localStorage.setItem("cartGoGoPizza", JSON.stringify(this.cartData));
   },
 
-  removeCart() {
-    // !todo написать функцию
+  removeCart(cartId) {
+    this.cartData = this.cartData.filter((item) => item.cartId !== cartId);
+    console.log("this.cartData: ", this.cartData);
+    localStorage.setItem("cartGoGoPizza", JSON.stringify(this.cartData));
+  },
+
+  clearCart() {
+    this.cartData = [];
+    localStorage.setItem("cartGoGoPizza", JSON.stringify(this.cartData));
   },
 };

@@ -1,5 +1,5 @@
 import { modalController } from "./modules/modalController.js";
-import { renderCart } from "./modules/renderCart.js";
+import { modalCartController } from "./modules/modalCartController.js";
 import { renderPizzas } from "./modules/renderPizzas.js";
 import { renderToppings } from "./modules/renderToppings.js";
 import { toppingsToogle } from "./modules/toppingToogle.js";
@@ -10,10 +10,10 @@ const init = () => {
   renderPizzas();
   modalController({
     modal: ".modal-cart",
-    btnOpen: ".header__cart",
+    btnOpen: ".header__cart, .hero__order",
     btnClose: ".modal__close",
     cbOpen() {
-      renderCart();
+      modalCartController();
     },
   });
 };
