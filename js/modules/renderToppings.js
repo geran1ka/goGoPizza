@@ -51,8 +51,6 @@ export const renderToppings = async () => {
       checkedToppings.push(value);
     }
 
-    console.log("checkedToppings: ", checkedToppings);
-
     renderPizzas(checkedToppings);
 
     btnReset.addEventListener("click", () => {
