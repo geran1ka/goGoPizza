@@ -69,7 +69,6 @@ export const renderPizzas = async (toppings) => {
         const pizza = await getData(
           `${URL_API}/api/products/${btnOpen.dataset.id}`
         );
-        console.log("pizza: ", pizza);
 
         renderModalPizza(pizza);
       },

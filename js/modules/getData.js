@@ -1,7 +1,7 @@
 import { hideLoader, showLoader } from "./loader.js";
 
 export const getData = async (url) => {
-  showLoader();
+  // showLoader();
   try {
     const response = await fetch(url);
 
@@ -15,6 +15,6 @@ export const getData = async (url) => {
 
     return [];
   } finally {
-    hideLoader();
+    // hideLoader();
   }
 };

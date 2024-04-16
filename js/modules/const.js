@@ -1,3 +1,3 @@
-// export const URL_API = "https://go-go-pizza-api-e0la.onrender.com";
+export const URL_API = "https://elegant-chestnut-move.glitch.me";
 
-export const URL_API = "http://localhost:3000";
+// export const URL_API = "http://localhost:3000";
